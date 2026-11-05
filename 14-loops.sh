@@ -22,7 +22,7 @@ VALIDATE(){
 
 }
 
-for pacakage in $@ # sudo ./14-loops.sh nginx mysql nodejs
+for pacakage in $@ # sudo 14-loops.sh nginx mysql nodejs
 do 
     dnf install $package -y &>>$LOGS_FILE
     VALIDATE $? "$package installation"
