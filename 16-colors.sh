@@ -9,5 +9,4 @@ C="\033[36m"
 W="\033[37m"
 N="\033[0m"
 
-echo -e "Hello World" $N ,$Y I am learning bash scripting $N"
-    
+echo -e "$R Hello World $N, $Y I am learning bash scripting $N"
