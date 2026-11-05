@@ -22,11 +22,11 @@ VALIDATE(){
 }
 
 yum install nginx -y &>> $LOGS_FILE
-VALIDATE $? "Installation Nginx"
+VALIDATE $? "Installing Nginx"
 
 yum install mysql -y &>> $LOGS_FILE
-VALIDATE $? "Installation Mysql"
+VALIDATE $? "Installing Mysql"
 
 yum install nodejs -y &>> $LOGS_FILE
-VALIDATE $? "Installation nodejs"
+VALIDATE $? "Installing nodejs"
 
