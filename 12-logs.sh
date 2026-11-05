@@ -25,7 +25,7 @@ yum install nginx -y &>> $LOGS_FILE
 VALIDATE $? "Installation Nginx"
 
 yum install mysql -y &>> $LOGS_FILE
-VALIDATE $? "Installation MySql"
+VALIDATE $? "Installation Mysql"
 
 yum install nodejs -y &>> $LOGS_FILE
 VALIDATE $? "Installation nodejs"
