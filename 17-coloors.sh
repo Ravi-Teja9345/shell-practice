@@ -36,10 +36,10 @@ for package in $@ # sudo sh 14-loops.sh nginx mysql nodejs
 do 
     dnf list installed $package &>>$LOGS_FILE
     if [ $? -ne 0 ]; then
-        echo  "$package not installed, installing now" | tee -a $LOGS_FILE
+        echo  "$package not installed, installing now" 
         dnf install $package -y &>>$LOGS_FILE
         VALIDATE $? "$package installation"
     else 
-        echo -e "$package already installed ... $Y SKIPPING $N" | tee -a $LOGS_FILE
+        echo -e "$package already installed ... $Y SKIPPING $N"
     fi
-echo -e "$R Hello World $N, $Y I am learning bash scripting $N" | tee -a $LOGS_FILE
+echo -e "$R Hello World $N, $Y I am learning bash scripting $N" 
