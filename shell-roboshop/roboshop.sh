@@ -7,7 +7,7 @@ for instance in $@
 
 do 
 
-instance_id = $( aws ec2 run-instances \
+INSTANCE_ID=$( aws ec2 run-instances \
 --image-id $AMI_ID \
 --security-group-id $SG_ID \
 --instance-type=t3.micro \
@@ -15,23 +15,23 @@ instance_id = $( aws ec2 run-instances \
 --query 'Reservations[0].Instances[0].PrivateIpAddress ' \
 --output  MongoDB)
 
-    if [$instance == "frontend" ]; then
+    if [ $instance == "frontend" ]; then
         IP=$(
             aws ec2 describe-instances \
-            --instance-ids $instance_id \
-            --query 'Reservations[0].Instances[0].PublicIpAddress'     
+            --instance-ids $INSTANCE_ID \
+            --query 'Reservations[0].Instances[0].PublicIpAddress' \    
             --output text
 
     ) 
     else
         IP=$(
             aws ec2 describe-instances \
-            --instance-ids $instance_id \
-            --query 'Reservations[0].Instances[0].PrivateIpAddress'     
+            --instance-ids $INSTANCE_ID \
+            --query 'Reservations[].Instances[].PrivateIpAddress' \     
             --output text
         )
     fi
-
+    
 done
 
 
