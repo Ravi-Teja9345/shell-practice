@@ -13,14 +13,14 @@ INSTANCE_ID=$( aws ec2 run-instances \
 --instance-type=t3.micro \
 --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=$instance}]' \
 --query 'Reservations[0].Instances[0].PrivateIpAddress ' \
---output  mongodb)
+--output mongodb)
 
     if [ $instance == "frontend" ]; then
         IP=$(
             aws ec2 describe-instances \
             --instance-ids $INSTANCE_ID \
             --query 'Reservations[0].Instances[0].PublicIpAddress' \    
-            --output text
+            --output mongodb
 
     ) 
     else
@@ -28,7 +28,7 @@ INSTANCE_ID=$( aws ec2 run-instances \
             aws ec2 describe-instances \
             --instance-ids $INSTANCE_ID \
             --query 'Reservations[].Instances[].PrivateIpAddress' \     
-            --output text
+            --output mongodb
         )
     fi
     echo "IP Address: $IP"
